@@ -1,0 +1,719 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
+
+
+
+
+
+
+<meta name="description" content="JVM虚拟机, java多线程并发处理, 反射, 动态代理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="java3">
+<meta property="og:url" content="http://yoursite.com/2017/02/09/java3/index.html">
+<meta property="og:site_name" content="200code">
+<meta property="og:description" content="JVM虚拟机, java多线程并发处理, 反射, 动态代理">
+<meta property="og:image" content="http://yoursite.com/uploads/jvm1.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/jvm2.jpg">
+<meta property="og:image" content="http://yoursite.com/uploads/classloader.jpg">
+<meta property="og:updated_time" content="2017-02-10T10:28:26.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="java3">
+<meta name="twitter:description" content="JVM虚拟机, java多线程并发处理, 反射, 动态代理">
+<meta name="twitter:image" content="http://yoursite.com/uploads/jvm1.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/02/09/java3/"/>
+
+
+
+
+
+  <title> java3 | 200code </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">200code</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+    
+      <p class="site-subtitle"></p>
+    
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+  <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/02/09/java3/">
+
+  <span style="display:none" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <meta itemprop="name" content="peter">
+    <meta itemprop="description" content="">
+    <meta itemprop="image" content="/uploads/avatar.jpg">
+  </span>
+
+  <span style="display:none" itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+    <meta itemprop="name" content="200code">
+    <span style="display:none" itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+      <img style="display:none;" itemprop="url image" alt="200code" src="">
+    </span>
+  </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                java3
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-02-09T12:01:28+08:00">
+                2017-02-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>JVM虚拟机, java多线程并发处理, 反射, 动态代理<br><a id="more"></a></p>
+<h1 id="JVM虚拟机"><a href="#JVM虚拟机" class="headerlink" title="JVM虚拟机"></a>JVM虚拟机</h1><h2 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h2><h3 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h3><h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>存放类信息、常量池、静态数据</p>
+<h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>存放new出的对象<br>成员变量存放在堆中</p>
+<h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>局部变量存放在栈中<br>Java中的栈：每当启动一个线程时JVM就为他分配一个java栈，栈是以帧为单位保存当前线程的运行状态。每当调用一个java方法时，JVM会在该线程对应的栈中压入一个帧。执行这个方法时，它使用这个帧来存储参数、局部变量、this等信息。方法执行完栈中会弹出帧。数据结构中的栈：当需要回溯操作时会用栈。路径回溯、操作回溯。</p>
+<h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>用于计算寻址。<br><img src="/uploads/jvm1.jpg" alt="模型"></p>
+<h3 id="物理模型"><a href="#物理模型" class="headerlink" title="物理模型"></a>物理模型</h3><p><img src="/uploads/jvm2.jpg" alt="模型"></p>
+<h2 id="java虚拟机与程序的生命周期"><a href="#java虚拟机与程序的生命周期" class="headerlink" title="java虚拟机与程序的生命周期"></a>java虚拟机与程序的生命周期</h2><p>Java程序是寄生在虚拟机上的。一个应用程序对应一个虚拟机。它们的生命周期是一致的。</p>
+<h3 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h3><p>程序开始运行。</p>
+<h3 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h3><ul>
+<li>程序正常运行结束。</li>
+<li>程序中执行了System.exit(0)。</li>
+<li>程序中出现异常。</li>
+<li>操作系统错误。</li>
+</ul>
+<h2 id="java类的加载"><a href="#java类的加载" class="headerlink" title="java类的加载"></a>java类的加载</h2><h3 id="java类的加载时机"><a href="#java类的加载时机" class="headerlink" title="java类的加载时机"></a>java类的加载时机</h3><p>Java程序使用类的时候会引起类的加载。只有首次主动方式使用类时，才会对类进行初始化。</p>
+<h4 id="主动方式"><a href="#主动方式" class="headerlink" title="主动方式"></a>主动方式</h4><p>只有当程序访问的静态变量或静态方法定义在当前类或当前接口时，才可以认为是主动使用。调用classloader加载一个类，不是对类的主动使用，不会导致类的初始化。</p>
+<ul>
+<li>new对象的时候。</li>
+<li>访问类（接口）的静态变量或给它赋值的时候。</li>
+<li>调用类的静态方法。</li>
+<li>反射  Class.forName(“xxx.xxx.xxx”)。</li>
+<li>初始化一个类的子类。</li>
+<li>启动类（main方法所在的类）。<h4 id="被动方式"><a href="#被动方式" class="headerlink" title="被动方式"></a>被动方式</h4>除了6种主动加载方式以外都是被动方式，如：虚拟机预加载。</li>
+</ul>
+<h2 id="java类的加载过程"><a href="#java类的加载过程" class="headerlink" title="java类的加载过程"></a>java类的加载过程</h2><h3 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h3><p>将类的.class二进制文件读入到方法区内。 然后在堆区创建一个java.lang.Class对象（Class对象构造器是私有的，只有虚拟机才能实例化它），封装方法区内对应的数据结构。加载.class的方式</p>
+<ul>
+<li>本地.class文件。</li>
+<li>网络下载的.class文件。 通过java.NET.URLClassloader类来使用</li>
+<li>jar,zip包中的.class文件。</li>
+<li>专有数据库中提取.class文件。<h3 id="连接"><a href="#连接" class="headerlink" title="连接"></a>连接</h3></li>
+<li>验证：确保类被加载的正确性。</li>
+<li>准备：为类的静态变量在方法区里分配内存，赋上默认值。</li>
+<li>解析：把符号引用转换为直接引用。<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3>为类的变量赋予类中的初始化值。</li>
+</ul>
+<h2 id="java类加载器"><a href="#java类加载器" class="headerlink" title="java类加载器"></a>java类加载器</h2><h3 id="类型"><a href="#类型" class="headerlink" title="类型"></a>类型</h3><h4 id="java虚拟机自带的类加载器"><a href="#java虚拟机自带的类加载器" class="headerlink" title="java虚拟机自带的类加载器"></a>java虚拟机自带的类加载器</h4><h5 id="根类加载器（bootstrap）"><a href="#根类加载器（bootstrap）" class="headerlink" title="根类加载器（bootstrap）"></a>根类加载器（bootstrap）</h5><p>c++实现，加载jre核心包的类，如：jie/lib/rt.jar 中的类，Java.lang.Object ，java.lang.String等。</p>
+<h5 id="扩展类加载器（extension）"><a href="#扩展类加载器（extension）" class="headerlink" title="扩展类加载器（extension）"></a>扩展类加载器（extension）</h5><p>java实现，父加载器是根加载器。加载jre中扩展包的类，如：jre/lib/ext/dnsns.jar中的类。</p>
+<h5 id="系统类加载器（system）"><a href="#系统类加载器（system）" class="headerlink" title="系统类加载器（system）"></a>系统类加载器（system）</h5><p>java实现，父加载器是扩展类加载器。从环境变量classpath指定的目录中加载类。是抽象类java.lang.ClassLoader的子类。</p>
+<h4 id="用户自定义的类加载器"><a href="#用户自定义的类加载器" class="headerlink" title="用户自定义的类加载器"></a>用户自定义的类加载器</h4><p>java实现，父加载器是系统类加载器。</p>
+<h3 id="加载过程"><a href="#加载过程" class="headerlink" title="加载过程"></a>加载过程</h3><p>加载时采用的是父委托机制。（是逻辑上的parent关系，通过包含一个父加载器引用作为属性的方式实现。而不是继承上的关系）<br>总是先用父加载器加载类，层层传递直到根加载器。如果父加载器加载不了，就用当前层的加载器加载。<br>如果全都不能加载，则抛出ClassNotFoundException异常。<br><img src="/uploads/classloader.jpg" alt="classloader"></p>
+<h2 id="java多线程内存模型"><a href="#java多线程内存模型" class="headerlink" title="java多线程内存模型"></a>java多线程内存模型</h2><h3 id="主存"><a href="#主存" class="headerlink" title="主存"></a>主存</h3><p>对应堆区，方法区（Java虚拟机规范把方法区描述为堆的一个逻辑部分，叫non-heap非堆，与堆区分开）。<br>主存中的内容是线程共享。全局变量，静态变量，常量是线程共享的。</p>
+<h3 id="线程间交互"><a href="#线程间交互" class="headerlink" title="线程间交互"></a>线程间交互</h3><ul>
+<li>不同线程间也无法直接访问彼此的工作内存的变量。</li>
+<li>线程的对变量的所有操作（读取，赋值）都必须在工作内存中进行。而不能直接操作主存中的变量。<br>线程使用主存的方法是，在工作内存中保存一份要使用到的主存中的变量的字段。线程间变量值的传递通过主存来完成。<br>线程A修改一个变量的值，然后向主内存进行回写，另外一条线程B在线程A回写完之后再从主内存进行读取操作，新值传递到了B线程。</li>
+</ul>
+<h3 id="线程工作内存"><a href="#线程工作内存" class="headerlink" title="线程工作内存"></a>线程工作内存</h3><p>对应栈区。<br>栈区中的内容是线程私有的。局部变量，参数变量是线程私有的。</p>
+<hr>
+<h1 id="java多线程并发处理"><a href="#java多线程并发处理" class="headerlink" title="java多线程并发处理"></a>java多线程并发处理</h1><h2 id="多个线程处理完成触发一个事件如何设计"><a href="#多个线程处理完成触发一个事件如何设计" class="headerlink" title="多个线程处理完成触发一个事件如何设计"></a>多个线程处理完成触发一个事件如何设计</h2><p>在项目需求中做同步的时候，有时候会有这种设计，<br>服务器端有统一的可配置的数据， 开启几个线程去服务器请求数据。线程任务完成后，将获取数据存入数据库。<br>用于界面展示。<br>每一个线程对应的数据库操作ok后，再发请求去服务端获取手机唯一id 对应的用户的自定义数据。<br>每一个线程都获取数据ok，触发一个事件。如弹出对话框，然后告诉用户服务端有数据，是否同步。<br>这种需求可以用事务处理的方法来做。</p>
+<h3 id="多线程处理的事务的数目确定的情况下："><a href="#多线程处理的事务的数目确定的情况下：" class="headerlink" title="多线程处理的事务的数目确定的情况下："></a>多线程处理的事务的数目确定的情况下：</h3><h4 id="变量计数法。"><a href="#变量计数法。" class="headerlink" title="变量计数法。"></a>变量计数法。</h4><p>一共n个线程。每完成一个线程任务，count++ ，当count  == n 的时候，触发事件。</p>
+<h4 id="容器计数法。"><a href="#容器计数法。" class="headerlink" title="容器计数法。"></a>容器计数法。</h4><p>每开始一个线程任务，容器中加入一个线程id，<br>每完成一个线程任务，容器中删除对应的线程id，<br>当容器为空 的时候，触发事件。</p>
+<h3 id="多线程处理的事务的数目不确定的情况下："><a href="#多线程处理的事务的数目不确定的情况下：" class="headerlink" title="多线程处理的事务的数目不确定的情况下："></a>多线程处理的事务的数目不确定的情况下：</h3><p>守护线程遍历的办法：<br>每开始一个线程任务，AtomicLong mTaskCounter = new AtomicLong(); 计数加一。执行完成后计数减一。<br>当守护线程 mTaskCounter 为0 时， 不在阻塞。执行finish action。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">public void startScan(ArrayList&lt;String&gt; paths) &#123;  </div><div class="line">    try &#123;  </div><div class="line">        for (String path : paths) &#123;  </div><div class="line">            scanDir(path);//多线程执行  </div><div class="line">        &#125;  </div><div class="line">        while (mTaskCounter.get() &gt; 0) &#123;  </div><div class="line">            Thread.sleep(100);  </div><div class="line">        &#125;  </div><div class="line">  </div><div class="line">        //do finish action  </div><div class="line">    &#125; catch (Exception ex) &#123;  </div><div class="line">        ex.printStackTrace();  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="多线程-扫描-文件-demo"><a href="#多线程-扫描-文件-demo" class="headerlink" title="多线程 扫描 文件 demo"></a><a href="https://github.com/javalive09/ScanSdCardDemo/tree/master/app/src/main/java/peter/util/scandemo" target="_blank" rel="external">多线程 扫描 文件 demo</a></h2><hr>
+<h1 id="反射"><a href="#反射" class="headerlink" title="反射"></a>反射</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">public class Reflection &#123;</div><div class="line"></div><div class="line">	private int age = 1;</div><div class="line">	private String name = &quot;peter&quot;;</div><div class="line">	</div><div class="line">	private String show() &#123;</div><div class="line">		LogUtil.i( &quot;show()&quot;);</div><div class="line">		return &quot;Reflection()&quot;;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private void show(int a) &#123;</div><div class="line">		LogUtil.i(&quot;show(&quot; + a + &quot;)&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private void show(int a, String str) &#123;</div><div class="line">		LogUtil.i( &quot;show(&quot; + a + &quot;,&quot;+str + &quot;)&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	private void show(Test test) &#123;</div><div class="line">		LogUtil.i(&quot;show(&quot; + test.toString() + &quot;)&quot;);</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	static class Test&#123;</div><div class="line"></div><div class="line">		@Override</div><div class="line">		public String toString() &#123;</div><div class="line">			return &quot;custom class Test&quot;;</div><div class="line">		&#125;</div><div class="line">		</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public int getAge() &#123;</div><div class="line">		return age;</div><div class="line">	&#125;</div><div class="line">	</div><div class="line">	public String getName() &#123;</div><div class="line">		return name;</div><div class="line">	&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="获取私有属性值"><a href="#获取私有属性值" class="headerlink" title="获取私有属性值"></a>获取私有属性值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	Field field = Reflection.class.getDeclaredField(&quot;name&quot;);</div><div class="line">	field.setAccessible(true);</div><div class="line">	Object obj = field.get(new Reflection());</div><div class="line">	LogUtil.i(&quot;obj=&quot; + obj);</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="设置私有属性值"><a href="#设置私有属性值" class="headerlink" title="设置私有属性值"></a>设置私有属性值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	Field field = Reflection.class.getDeclaredField(&quot;age&quot;);</div><div class="line">	field.setAccessible(true);</div><div class="line">	field.set(new Reflection(), 100);</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="调用私有方法"><a href="#调用私有方法" class="headerlink" title="调用私有方法"></a>调用私有方法</h2><h3 id="调用只包含基本类型参数的方法"><a href="#调用只包含基本类型参数的方法" class="headerlink" title="调用只包含基本类型参数的方法"></a>调用只包含基本类型参数的方法</h3><p>基本类型都有自己的Class(不是他们的包装类), byte.class, short.class, long.class<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	Method method = Reflection.class.getDeclaredMethod(&quot;show&quot;,</div><div class="line">			new Class[] &#123; int.class &#125;);</div><div class="line">	method.setAccessible(true);</div><div class="line">	method.invoke(new Reflection(), new Object[] &#123; 1 &#125;);</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="调用只包含引用类型参数的方法"><a href="#调用只包含引用类型参数的方法" class="headerlink" title="调用只包含引用类型参数的方法"></a>调用只包含引用类型参数的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	Method method = Reflection.class.getDeclaredMethod(&quot;show&quot;,</div><div class="line">			new Class[] &#123; Reflection.Test.class &#125;);</div><div class="line">	method.setAccessible(true);</div><div class="line">	method.invoke(new Reflection(), new Object[] &#123; new Reflection.Test() &#125;);</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用既包含基本类型又包含引用类型参数的方法"><a href="#调用既包含基本类型又包含引用类型参数的方法" class="headerlink" title="调用既包含基本类型又包含引用类型参数的方法"></a>调用既包含基本类型又包含引用类型参数的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	Method method = Reflection.class.getDeclaredMethod(&quot;show&quot;,</div><div class="line">			new Class[] &#123; int.class, String.class &#125;);</div><div class="line">	method.setAccessible(true);</div><div class="line">	method.invoke(new Reflection(), new Object[] &#123; 1, &quot;string&quot; &#125;);</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="调用无参数的方法"><a href="#调用无参数的方法" class="headerlink" title="调用无参数的方法"></a>调用无参数的方法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	Method method = Reflection.class.getDeclaredMethod(&quot;show&quot;);</div><div class="line">	method.setAccessible(true);</div><div class="line">	method.invoke(new Reflection());</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="获取方法返回值"><a href="#获取方法返回值" class="headerlink" title="获取方法返回值"></a>获取方法返回值</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">try &#123;</div><div class="line">	Method method = Reflection.class.getDeclaredMethod(&quot;show&quot;);</div><div class="line">	method.setAccessible(true);</div><div class="line">	method.invoke(new Reflection());</div><div class="line">&#125; catch (Exception e) &#123;</div><div class="line">	e.printStackTrace();</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<hr>
+<h1 id="动态代理"><a href="#动态代理" class="headerlink" title="动态代理"></a>动态代理</h1><p>代理类在程序运行前不存在、运行时由程序动态生成的代理方式称为动态代理。<br>Java 提供了动态代理的实现方式，可以在运行时刻由虚拟机动态生成代理类。这种代理方式的一大好处是可以方便对代理类的函数做统一或特殊处理，如记录所有函数执行时间、所有函数执行前添加验证判断、对某个特殊函数进行特殊操作，而不用像静态代理方式那样需要新建代理类并修改函数内容。<a href="http://blog.csdn.net/zhangerqing/article/details/42504281" target="_blank" rel="external">虚拟机内部动态new代理类的原理</a>。<br>实现动态代理需要以下三步：</p>
+<h2 id="新建代理类-被最终调用的代理类"><a href="#新建代理类-被最终调用的代理类" class="headerlink" title="新建代理类(被最终调用的代理类)"></a>新建代理类(被最终调用的代理类)</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">public interface IProxy &#123; </div><div class="line">    public abstract void add();  </div><div class="line">&#125;</div><div class="line"></div><div class="line">public class ProxyImpl implements IProxy &#123;  </div><div class="line"></div><div class="line">    @Override  </div><div class="line">    public void add() &#123;  </div><div class="line">        System.out.println(&quot;----- add -----&quot;);  </div><div class="line">    &#125;   </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实现-InvocationHandler-接口"><a href="#实现-InvocationHandler-接口" class="headerlink" title="实现 InvocationHandler 接口"></a>实现 InvocationHandler 接口</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">public class MyInvocationHandler implements InvocationHandler &#123;  </div><div class="line">    </div><div class="line">    private Object target;  </div><div class="line"></div><div class="line">    public MyInvocationHandler(Object target) &#123;  </div><div class="line">        super();  </div><div class="line">        this.target = target;  </div><div class="line">    &#125; </div><div class="line">  </div><div class="line">    @Override  </div><div class="line">    public Object invoke(Object proxy, Method method, Object[] args)  </div><div class="line">            throws Throwable &#123;  </div><div class="line">        System.out.println(&quot;----- before -----&quot;);  </div><div class="line">        Object result = method.invoke(target, args);  </div><div class="line">        System.out.println(&quot;----- after -----&quot;);  </div><div class="line">        return result;  </div><div class="line">    &#125;  </div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="通过Proxy类静态函数生成代理对象"><a href="#通过Proxy类静态函数生成代理对象" class="headerlink" title="通过Proxy类静态函数生成代理对象"></a>通过Proxy类静态函数生成代理对象</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">public static Object newProxyInstance(ClassLoader loader, Class&lt;?&gt;[] interfaces, InvocationHandler h);</div><div class="line"></div><div class="line">IProxy proxy = (IProxy)(Proxy.newProxyInstance(IProxy.class.getClassLoader(), new Class[] &#123;IProxy.class&#125;, new ProxyImpl());</div><div class="line">proxy.add();</div></pre></td></tr></table></figure>
+<h1 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h1><h2 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h2><p>通过复用线程控制线程数量，来节省内存开销，和提高运行速度。</p>
+<h2 id="参数含义"><a href="#参数含义" class="headerlink" title="参数含义"></a>参数含义</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">public ThreadPoolExecutor(int corePoolSize,  </div><div class="line">                              int maximumPoolSize,  </div><div class="line">                              long keepAliveTime,  </div><div class="line">                              TimeUnit unit,  </div><div class="line">                              BlockingQueue&lt;Runnable&gt; workQueue,  </div><div class="line">                              ThreadFactory threadFactory,  </div><div class="line">                              RejectedExecutionHandler handler)</div></pre></td></tr></table></figure>
+<h3 id="corePoolSize"><a href="#corePoolSize" class="headerlink" title="corePoolSize"></a>corePoolSize</h3><p>核心线程数量。相当于公司中的在编人员数。</p>
+<h3 id="workQueue"><a href="#workQueue" class="headerlink" title="workQueue"></a>workQueue</h3><p>工作队列。 如果业务实在繁忙，则加入工作队列，排队处理。</p>
+<h3 id="maximumPoolSize"><a href="#maximumPoolSize" class="headerlink" title="maximumPoolSize"></a>maximumPoolSize</h3><p>最大线程数。公司由于业务繁忙，队列排队也排满了，可以扩充一些临时工。公司可以一共雇佣多少人（在编 ＋ 临时工）。</p>
+<h3 id="keepAliveTime"><a href="#keepAliveTime" class="headerlink" title="keepAliveTime"></a>keepAliveTime</h3><p>闲置线程存活时间。公司由于业务减少，临时工出现空闲。临时工可以留在公司的时间。</p>
+<h3 id="unit"><a href="#unit" class="headerlink" title="unit"></a>unit</h3><p>设置keepAliveTime的单位</p>
+<h3 id="threadFactory"><a href="#threadFactory" class="headerlink" title="threadFactory"></a>threadFactory</h3><p>线程工厂。用于创建线程。相当于公司的人力资源部。</p>
+<h3 id="handler"><a href="#handler" class="headerlink" title="handler"></a>handler</h3><p>超过队列容量时，处理策略。在 ThreadPoolExecutor 里面定义了 4 种 handler 策略，分别是</p>
+<h4 id="1-CallerRunsPolicy"><a href="#1-CallerRunsPolicy" class="headerlink" title="1.CallerRunsPolicy"></a>1.CallerRunsPolicy</h4><p>这个策略重试添加当前的任务，他会自动重复调用 execute() 方法，直到成功。</p>
+<h4 id="2-AbortPolicy"><a href="#2-AbortPolicy" class="headerlink" title="2. AbortPolicy"></a>2. AbortPolicy</h4><p>对拒绝任务抛弃处理，并且抛出异常。</p>
+<h4 id="3-DiscardPolicy"><a href="#3-DiscardPolicy" class="headerlink" title="3. DiscardPolicy"></a>3. DiscardPolicy</h4><p>对拒绝任务直接无声抛弃，没有异常信息。</p>
+<h4 id="4-DiscardOldestPolicy"><a href="#4-DiscardOldestPolicy" class="headerlink" title="4. DiscardOldestPolicy"></a>4. DiscardOldestPolicy</h4><p>对拒绝任务不抛弃，而是抛弃队列里面等待最久的一个线程，然后把拒绝任务加到队列。</p>
+<h2 id="执行逻辑"><a href="#执行逻辑" class="headerlink" title="执行逻辑"></a>执行逻辑</h2><h3 id="当线程数小于corePoolSize时，增加一个任务加一个worker增加一个线程"><a href="#当线程数小于corePoolSize时，增加一个任务加一个worker增加一个线程" class="headerlink" title="当线程数小于corePoolSize时，增加一个任务加一个worker增加一个线程"></a>当线程数小于corePoolSize时，增加一个任务加一个worker增加一个线程</h3><h3 id="当worker大于核心线程数时，放入队列排队处理"><a href="#当worker大于核心线程数时，放入队列排队处理" class="headerlink" title="当worker大于核心线程数时，放入队列排队处理"></a>当worker大于核心线程数时，放入队列排队处理</h3><h3 id="当队列排满时"><a href="#当队列排满时" class="headerlink" title="当队列排满时"></a>当队列排满时</h3><h4 id="线程数小于maximumPoolSize，增加一个任务加一个worker增加一个线程"><a href="#线程数小于maximumPoolSize，增加一个任务加一个worker增加一个线程" class="headerlink" title="线程数小于maximumPoolSize，增加一个任务加一个worker增加一个线程"></a>线程数小于maximumPoolSize，增加一个任务加一个worker增加一个线程</h4><h4 id="线程数达到maximumPoolSize，增加任务，使用handler策略处理。"><a href="#线程数达到maximumPoolSize，增加任务，使用handler策略处理。" class="headerlink" title="线程数达到maximumPoolSize，增加任务，使用handler策略处理。"></a>线程数达到maximumPoolSize，增加任务，使用handler策略处理。</h4><h2 id="关闭线程池"><a href="#关闭线程池" class="headerlink" title="关闭线程池"></a>关闭线程池</h2><h3 id="shutdown"><a href="#shutdown" class="headerlink" title="shutdown()"></a>shutdown()</h3><p>不会立即终止线程池，而是要等所有任务缓存队列中的任务都执行完后才终止，但再也不会接受新的任务</p>
+<h3 id="shutdownNow"><a href="#shutdownNow" class="headerlink" title="shutdownNow()"></a>shutdownNow()</h3><p>立即终止线程池，并尝试打断正在执行的任务，并且清空任务缓存队列，返回尚未执行的任务</p>
+<h2 id="线程池容量的动态调整"><a href="#线程池容量的动态调整" class="headerlink" title="线程池容量的动态调整"></a>线程池容量的动态调整</h2><h3 id="setCorePoolSize"><a href="#setCorePoolSize" class="headerlink" title="setCorePoolSize"></a>setCorePoolSize</h3><p>设置核心池大小</p>
+<h3 id="setMaximumPoolSize"><a href="#setMaximumPoolSize" class="headerlink" title="setMaximumPoolSize"></a>setMaximumPoolSize</h3><p>设置线程池最大能创建的线程数目大小</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/08/java2/" rel="next" title="java2">
+                <i class="fa fa-chevron-left"></i> java2
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/02/09/设计模式/" rel="prev" title="设计模式">
+                设计模式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+          
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/uploads/avatar.jpg"
+               alt="peter" />
+          <p class="site-author-name" itemprop="name">peter</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+        
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives">
+                <span class="site-state-item-count">17</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#JVM虚拟机"><span class="nav-number">1.</span> <span class="nav-text">JVM虚拟机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#java内存模型"><span class="nav-number">1.1.</span> <span class="nav-text">java内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#逻辑模型"><span class="nav-number">1.1.1.</span> <span class="nav-text">逻辑模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#方法区"><span class="nav-number">1.1.1.1.</span> <span class="nav-text">方法区</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#堆"><span class="nav-number">1.1.2.</span> <span class="nav-text">堆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#栈"><span class="nav-number">1.1.3.</span> <span class="nav-text">栈</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#寄存器"><span class="nav-number">1.1.4.</span> <span class="nav-text">寄存器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#物理模型"><span class="nav-number">1.1.5.</span> <span class="nav-text">物理模型</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java虚拟机与程序的生命周期"><span class="nav-number">1.2.</span> <span class="nav-text">java虚拟机与程序的生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#开始"><span class="nav-number">1.2.1.</span> <span class="nav-text">开始</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#结束"><span class="nav-number">1.2.2.</span> <span class="nav-text">结束</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java类的加载"><span class="nav-number">1.3.</span> <span class="nav-text">java类的加载</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#java类的加载时机"><span class="nav-number">1.3.1.</span> <span class="nav-text">java类的加载时机</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主动方式"><span class="nav-number">1.3.1.1.</span> <span class="nav-text">主动方式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#被动方式"><span class="nav-number">1.3.1.2.</span> <span class="nav-text">被动方式</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java类的加载过程"><span class="nav-number">1.4.</span> <span class="nav-text">java类的加载过程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#加载"><span class="nav-number">1.4.1.</span> <span class="nav-text">加载</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#连接"><span class="nav-number">1.4.2.</span> <span class="nav-text">连接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#初始化"><span class="nav-number">1.4.3.</span> <span class="nav-text">初始化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java类加载器"><span class="nav-number">1.5.</span> <span class="nav-text">java类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#类型"><span class="nav-number">1.5.1.</span> <span class="nav-text">类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#java虚拟机自带的类加载器"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">java虚拟机自带的类加载器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#根类加载器（bootstrap）"><span class="nav-number">1.5.1.1.1.</span> <span class="nav-text">根类加载器（bootstrap）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#扩展类加载器（extension）"><span class="nav-number">1.5.1.1.2.</span> <span class="nav-text">扩展类加载器（extension）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#系统类加载器（system）"><span class="nav-number">1.5.1.1.3.</span> <span class="nav-text">系统类加载器（system）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#用户自定义的类加载器"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">用户自定义的类加载器</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加载过程"><span class="nav-number">1.5.2.</span> <span class="nav-text">加载过程</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#java多线程内存模型"><span class="nav-number">1.6.</span> <span class="nav-text">java多线程内存模型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主存"><span class="nav-number">1.6.1.</span> <span class="nav-text">主存</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程间交互"><span class="nav-number">1.6.2.</span> <span class="nav-text">线程间交互</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线程工作内存"><span class="nav-number">1.6.3.</span> <span class="nav-text">线程工作内存</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#java多线程并发处理"><span class="nav-number">2.</span> <span class="nav-text">java多线程并发处理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#多个线程处理完成触发一个事件如何设计"><span class="nav-number">2.1.</span> <span class="nav-text">多个线程处理完成触发一个事件如何设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程处理的事务的数目确定的情况下："><span class="nav-number">2.1.1.</span> <span class="nav-text">多线程处理的事务的数目确定的情况下：</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#变量计数法。"><span class="nav-number">2.1.1.1.</span> <span class="nav-text">变量计数法。</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#容器计数法。"><span class="nav-number">2.1.1.2.</span> <span class="nav-text">容器计数法。</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#多线程处理的事务的数目不确定的情况下："><span class="nav-number">2.1.2.</span> <span class="nav-text">多线程处理的事务的数目不确定的情况下：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多线程-扫描-文件-demo"><span class="nav-number">2.2.</span> <span class="nav-text">多线程 扫描 文件 demo</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#反射"><span class="nav-number">3.</span> <span class="nav-text">反射</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#获取私有属性值"><span class="nav-number">3.1.</span> <span class="nav-text">获取私有属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置私有属性值"><span class="nav-number">3.2.</span> <span class="nav-text">设置私有属性值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#调用私有方法"><span class="nav-number">3.3.</span> <span class="nav-text">调用私有方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#调用只包含基本类型参数的方法"><span class="nav-number">3.3.1.</span> <span class="nav-text">调用只包含基本类型参数的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用只包含引用类型参数的方法"><span class="nav-number">3.3.2.</span> <span class="nav-text">调用只包含引用类型参数的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用既包含基本类型又包含引用类型参数的方法"><span class="nav-number">3.3.3.</span> <span class="nav-text">调用既包含基本类型又包含引用类型参数的方法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#调用无参数的方法"><span class="nav-number">3.3.4.</span> <span class="nav-text">调用无参数的方法</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#获取方法返回值"><span class="nav-number">3.4.</span> <span class="nav-text">获取方法返回值</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#动态代理"><span class="nav-number">4.</span> <span class="nav-text">动态代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#新建代理类-被最终调用的代理类"><span class="nav-number">4.1.</span> <span class="nav-text">新建代理类(被最终调用的代理类)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现-InvocationHandler-接口"><span class="nav-number">4.2.</span> <span class="nav-text">实现 InvocationHandler 接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#通过Proxy类静态函数生成代理对象"><span class="nav-number">4.3.</span> <span class="nav-text">通过Proxy类静态函数生成代理对象</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线程池"><span class="nav-number">5.</span> <span class="nav-text">线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#作用"><span class="nav-number">5.1.</span> <span class="nav-text">作用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参数含义"><span class="nav-number">5.2.</span> <span class="nav-text">参数含义</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#corePoolSize"><span class="nav-number">5.2.1.</span> <span class="nav-text">corePoolSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#workQueue"><span class="nav-number">5.2.2.</span> <span class="nav-text">workQueue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#maximumPoolSize"><span class="nav-number">5.2.3.</span> <span class="nav-text">maximumPoolSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#keepAliveTime"><span class="nav-number">5.2.4.</span> <span class="nav-text">keepAliveTime</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#unit"><span class="nav-number">5.2.5.</span> <span class="nav-text">unit</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#threadFactory"><span class="nav-number">5.2.6.</span> <span class="nav-text">threadFactory</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#handler"><span class="nav-number">5.2.7.</span> <span class="nav-text">handler</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-CallerRunsPolicy"><span class="nav-number">5.2.7.1.</span> <span class="nav-text">1.CallerRunsPolicy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-AbortPolicy"><span class="nav-number">5.2.7.2.</span> <span class="nav-text">2. AbortPolicy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-DiscardPolicy"><span class="nav-number">5.2.7.3.</span> <span class="nav-text">3. DiscardPolicy</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-DiscardOldestPolicy"><span class="nav-number">5.2.7.4.</span> <span class="nav-text">4. DiscardOldestPolicy</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行逻辑"><span class="nav-number">5.3.</span> <span class="nav-text">执行逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#当线程数小于corePoolSize时，增加一个任务加一个worker增加一个线程"><span class="nav-number">5.3.1.</span> <span class="nav-text">当线程数小于corePoolSize时，增加一个任务加一个worker增加一个线程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当worker大于核心线程数时，放入队列排队处理"><span class="nav-number">5.3.2.</span> <span class="nav-text">当worker大于核心线程数时，放入队列排队处理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#当队列排满时"><span class="nav-number">5.3.3.</span> <span class="nav-text">当队列排满时</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#线程数小于maximumPoolSize，增加一个任务加一个worker增加一个线程"><span class="nav-number">5.3.3.1.</span> <span class="nav-text">线程数小于maximumPoolSize，增加一个任务加一个worker增加一个线程</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#线程数达到maximumPoolSize，增加任务，使用handler策略处理。"><span class="nav-number">5.3.3.2.</span> <span class="nav-text">线程数达到maximumPoolSize，增加任务，使用handler策略处理。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关闭线程池"><span class="nav-number">5.4.</span> <span class="nav-text">关闭线程池</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#shutdown"><span class="nav-number">5.4.1.</span> <span class="nav-text">shutdown()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#shutdownNow"><span class="nav-number">5.4.2.</span> <span class="nav-text">shutdownNow()</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线程池容量的动态调整"><span class="nav-number">5.5.</span> <span class="nav-text">线程池容量的动态调整</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#setCorePoolSize"><span class="nav-number">5.5.1.</span> <span class="nav-text">setCorePoolSize</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#setMaximumPoolSize"><span class="nav-number">5.5.2.</span> <span class="nav-text">setMaximumPoolSize</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">peter</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+      <!-- UY BEGIN -->
+      <script type="text/javascript" src="http://v2.uyan.cc/code/uyan.js?uid="></script>
+      <!-- UY END -->
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+
+</body>
+</html>
