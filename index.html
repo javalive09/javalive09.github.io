@@ -327,25 +327,25 @@
 
       
         
-          
-            <a id="more"></a>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">git --version  </div><div class="line">git config --list</div><div class="line">git config --global user.name &quot;first name&quot;</div><div class="line">git config --global user.email &quot;javalive09@163.com&quot;  </div><div class="line">git config color.ui true </div><div class="line">git config -e //demo/.git/config</div><div class="line">git config -e --global // /home/peter/.gitconfig</div><div class="line">git config -e --system  // /etc/gitconfig</div><div class="line">ssh-keygen -t rsa -C &quot;javalive09@163.com&quot;</div><div class="line">clip &lt; ~/.ssh/id_rsa.pub</div><div class="line">ssh -T git@github.com</div></pre></td></tr></table></figure>
-<p>配置多个仓库<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git touch ~/.ssh/config</div></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line">#GitHub  </div><div class="line">Host github.com  </div><div class="line">  User git  </div><div class="line">  HostName github.com  </div><div class="line">  IdentityFile ~/.ssh/id_rsa  </div><div class="line">  </div><div class="line">#Maxthon   </div><div class="line">Host mgit    </div><div class="line">  User git      </div><div class="line">  HostName mgit.maxthon.net  </div><div class="line">  Port 22      </div><div class="line">  IdentityFile ~/.ssh/id_rsa  </div><div class="line">  </div><div class="line">#Bitbucket  </div><div class="line">Host bitbucket.org  </div><div class="line"> User git  </div><div class="line"> HostName bitbucket.org  </div><div class="line"> IdentityFile ~/.ssh/id_rsa</div></pre></td></tr></table></figure>
-<h1 id="创建和提交"><a href="#创建和提交" class="headerlink" title="创建和提交"></a>创建和提交</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git init </div><div class="line">git add -A  //添加到缓存区</div><div class="line">git commit -m &quot;提交代码信息&quot;  // 提交代码</div><div class="line">git commit --amend // 修改提交信息</div></pre></td></tr></table></figure>
-<h1 id="远程仓库"><a href="#远程仓库" class="headerlink" title="远程仓库"></a>远程仓库</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git remote -v</div><div class="line">git remote add origin https://github.com/javalive09/CodeBag.git</div><div class="line">git push origin --delete &lt;branchName&gt;  //删除远程仓库</div><div class="line">git push origin master //推送到远程仓库</div><div class="line">git clone https://github.com/javalive09/CodeBag.git // 从远程仓库clone</div><div class="line">git pull //从远程仓库拉取pull = fetch + merge</div></pre></td></tr></table></figure>
-<h1 id="切换和还原"><a href="#切换和还原" class="headerlink" title="切换和还原"></a>切换和还原</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git checkout develop -f //强制切换分支 （放弃本地修改切换)</div><div class="line">git checkout HEAD /Users/peter/git/xui/XuiPSdk/libs/armeabi/libgetuiext.so  //还原单个文件到HEAD</div><div class="line">git checkout &lt;commit&gt; &lt;filepath&gt;  //还原单个文件的某个版本</div><div class="line">git checkout 45b92e3 /Users/peter/git/xui/CarClient/assets/video/video.mp4  </div><div class="line">git reset --hard master  //还原整个项目到master</div><div class="line">git reset --hard HEAD  //还原到HEAD</div><div class="line">git reset –hard HEAD^  //还原到HEAD上次提交</div></pre></td></tr></table></figure>
-<h2 id="查看仓库状态"><a href="#查看仓库状态" class="headerlink" title="查看仓库状态"></a>查看仓库状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git status</div></pre></td></tr></table></figure>
-<h2 id="查看log"><a href="#查看log" class="headerlink" title="查看log"></a>查看log</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">git log  </div><div class="line">git log --graph </div><div class="line">git log --oneline</div><div class="line">git log --oneline --graph</div></pre></td></tr></table></figure>
-<h1 id="tag-标签"><a href="#tag-标签" class="headerlink" title="tag 标签"></a>tag 标签</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git tag   </div><div class="line">git tag -l  </div><div class="line">git show 1.0  </div><div class="line">git tag -a v1.0 -m &quot;新加tag&quot;  </div><div class="line">git tag -d v1.0  </div><div class="line">git push origin --tags  </div><div class="line">git push origin :refs/tags/&lt;tag name&gt;</div></pre></td></tr></table></figure>
-<h1 id="分支"><a href="#分支" class="headerlink" title="分支"></a>分支</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">git branch  </div><div class="line">git branch abc  </div><div class="line">git checkout abc  </div><div class="line">git push origin abc  </div><div class="line">git push origin :abc </div><div class="line">git checkout -b abc </div><div class="line">git branch -a   //列出所有分支（本地＋远程）</div><div class="line">git checkout -b abc  //创建并且切换分支</div><div class="line">git branch -d &lt;branch name&gt; //删除本地分支</div><div class="line">git branch -m release_v1.24 release_v1.0.0 //修改分支名字</div></pre></td></tr></table></figure>
-<h1 id="stash"><a href="#stash" class="headerlink" title="stash"></a>stash</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash </div><div class="line">git stash list</div><div class="line">git stash apply stash@&#123;2&#125;</div></pre></td></tr></table></figure>
-<h1 id="删除"><a href="#删除" class="headerlink" title="删除"></a>删除</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git rm --cache path   //忽略已经提交的文件</div><div class="line">git rm path  //删除版本库中的文件</div><div class="line">git mv welcome.txt README  //修改版本库中的文件名</div></pre></td></tr></table></figure>
-<h1 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">git reflog show </div><div class="line">git branch recover_branch commitid</div></pre></td></tr></table></figure>
-<h1 id="对比文件"><a href="#对比文件" class="headerlink" title="对比文件"></a>对比文件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">git diff //对比（工作区和上次提交）的区别</div><div class="line">git diff filename  //对比（工作区某个文件和上次提交的这个文件）的区别</div><div class="line">git diff --cached  //对比（缓存区和上次提交）的区别</div><div class="line">git diff –cached filename //对比（缓存区某个文件和上次提交的这个文件）的区别</div><div class="line">git diff ffd98b291e0caa6c33575c1ef465eae661ce40c9 b8e7b00c02b95b320f14b625663fdecf2d63e74c   //对比（某两个版本）的区别</div><div class="line">git diff ffd98b291e0caa6c33575c1ef465eae661ce40c9:filename b8e7b00c02b95b320f14b625663fdecf2d63e74c:filename  //对比（某两个版本文件）的区别</div></pre></td></tr></table></figure>
-<h1 id="归档"><a href="#归档" class="headerlink" title="归档"></a>归档</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git archive -o latest.zip HEAD  //基于最新提交建立归档文件latest.zip</div><div class="line">git archive -o partial.tar HEAD src doc  //只将目录src和doc建立到归档partial.tar中</div><div class="line">git archive --format=tar --prefix=1.0/ v1.0 | gzip &gt; foo-1.0.tar.gz  //基于里程碑v1.0建立归档，并且为归档中文件添加目录前缀1.0</div></pre></td></tr></table></figure>
-
-          
+          <ol>
+<li>配置</li>
+<li>创建和提交</li>
+<li>远程仓库</li>
+<li>切换和还原</li>
+<li>tag 标签</li>
+<li>分支</li>
+<li>stash</li>
+<li>删除</li>
+<li>恢复</li>
+<li>对比文件</li>
+<li>归档
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/13/git命令/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -471,44 +471,21 @@
 
       
         
-          
-            <a id="more"></a>
-<h1 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h1><ul>
-<li><a href="http://200code.com/2017/02/13/git%E5%91%BD%E4%BB%A4/" target="_blank" rel="external">查看</a></li>
-</ul>
-<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div></pre></td><td class="code"><pre><div class="line">git clone //克隆仓库</div><div class="line"></div><div class="line">git init  //创建仓库</div><div class="line"></div><div class="line">git add -A  //添加到缓存区</div><div class="line"></div><div class="line">git commit -m &quot;提交代码信息&quot;</div><div class="line"></div><div class="line">git commit --amend // 修改提交信息</div><div class="line"></div><div class="line">git checkout abc //切换分支</div><div class="line"></div><div class="line">git branch a //创建分支</div><div class="line"></div><div class="line">git checkout -b abc //创建分支并切换</div><div class="line"></div><div class="line">git reset --hard HEAD  //还原到HEAD</div><div class="line"></div><div class="line">git diff //对比（工作区和上次提交）的区别</div><div class="line"></div><div class="line">git status //状态</div><div class="line"></div><div class="line">git log  // log</div><div class="line"></div><div class="line">git pull //从远程仓库拉取pull = fetch + merge</div></pre></td></tr></table></figure>
-<hr>
-<h1 id="一些使用场景"><a href="#一些使用场景" class="headerlink" title="一些使用场景"></a>一些使用场景</h1><h2 id="合并和冲突解决"><a href="#合并和冲突解决" class="headerlink" title="合并和冲突解决"></a>合并和冲突解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">      D---E test  </div><div class="line">     /  </div><div class="line">A---B---C---F master</div></pre></td></tr></table></figure>
-<h3 id="在master中执行-merge"><a href="#在master中执行-merge" class="headerlink" title="在master中执行 merge"></a>在master中执行 merge</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">      D--------E  </div><div class="line">     /          \  </div><div class="line">A---B---C---F----G   test, master</div></pre></td></tr></table></figure>
-<h3 id="在master中执行-rebase"><a href="#在master中执行-rebase" class="headerlink" title="在master中执行 rebase"></a>在master中执行 rebase</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">A---B---D---E---C&apos;---F&apos;   test, master</div></pre></td></tr></table></figure>
-<h3 id="在master中执行-cherry-pick"><a href="#在master中执行-cherry-pick" class="headerlink" title="在master中执行 cherry-pick"></a>在master中执行 cherry-pick</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">A---B---C---F---D&apos;----E&apos;  master</div></pre></td></tr></table></figure>
-<h3 id="三方合并-Three-way-merge"><a href="#三方合并-Three-way-merge" class="headerlink" title="三方合并(Three-way merge)"></a>三方合并(Three-way merge)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">   |------102</div><div class="line">   |</div><div class="line">100|------101</div></pre></td></tr></table></figure>
-<ol>
-<li><p>以父节点做为判断标准</p>
-</li>
-<li><p>101，102 有不同的文件的改变，留下这些改变。</p>
-</li>
-<li><p>101，102 有相同的文件的改变，</p>
-</li>
+          <ol>
+<li>git命令</li>
+<li>常用命令</li>
+<li>一些使用场景</li>
+<li>.git文件夹结构及git内部原理</li>
+<li>远程仓库的使用及github</li>
+<li>使用github搭建免费博客</li>
 </ol>
-<p>1）如果改变相同，留下这些改变。</p>
-<p>2）如果改变不同，提示冲突让用户去解决。</p>
-<h2 id="回滚"><a href="#回滚" class="headerlink" title="回滚"></a>回滚</h2><h3 id="没有push到remote-仓库的回滚"><a href="#没有push到remote-仓库的回滚" class="headerlink" title="没有push到remote 仓库的回滚"></a>没有push到remote 仓库的回滚</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reset --hard commitid</div></pre></td></tr></table></figure>
-<h3 id="已经push到remote仓库的回滚"><a href="#已经push到remote仓库的回滚" class="headerlink" title="已经push到remote仓库的回滚"></a>已经push到remote仓库的回滚</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git revert commitid</div></pre></td></tr></table></figure>
-<h3 id="定位并回滚到引入bug的版本"><a href="#定位并回滚到引入bug的版本" class="headerlink" title="定位并回滚到引入bug的版本"></a>定位并回滚到引入bug的版本</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">git bisect start  </div><div class="line">git bisect bad  </div><div class="line">git bisect good commtid  </div><div class="line">git bisect bad  </div><div class="line">...  </div><div class="line">git bisect good  </div><div class="line">git bisect reset</div></pre></td></tr></table></figure>
-<h2 id="当前工作被打断"><a href="#当前工作被打断" class="headerlink" title="当前工作被打断"></a>当前工作被打断</h2><h3 id="保存工作进度"><a href="#保存工作进度" class="headerlink" title="保存工作进度"></a>保存工作进度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash  </div><div class="line">git stash list  </div><div class="line">git stash apply stash@&#123;2&#125;</div></pre></td></tr></table></figure>
-<h3 id="补充提交"><a href="#补充提交" class="headerlink" title="补充提交"></a>补充提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend</div></pre></td></tr></table></figure>
-<h2 id="挽救误操作"><a href="#挽救误操作" class="headerlink" title="挽救误操作"></a>挽救误操作</h2><p>分支丢失<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reflog show</div></pre></td></tr></table></figure></p>
-<h1 id="git文件夹结构及git内部原理"><a href="#git文件夹结构及git内部原理" class="headerlink" title=".git文件夹结构及git内部原理"></a>.git文件夹结构及git内部原理</h1><h2 id="git-stage-暂存区"><a href="#git-stage-暂存区" class="headerlink" title="git-stage 暂存区"></a>git-stage 暂存区</h2><p><img src="/uploads/git-stage.jpg" alt=""></p>
-<h2 id="git-checkout-检出"><a href="#git-checkout-检出" class="headerlink" title="git-checkout 检出"></a>git-checkout 检出</h2><p><img src="/uploads/git-checkout.jpg" alt=""></p>
-<h2 id="git-diff-对比差异"><a href="#git-diff-对比差异" class="headerlink" title="git-diff 对比差异"></a>git-diff 对比差异</h2><p><img src="/uploads/git-diff.jpg" alt=""></p>
-<h2 id="git-reset-重置"><a href="#git-reset-重置" class="headerlink" title="git-reset 重置"></a>git-reset 重置</h2><p><img src="/uploads/git-reset.jpg" alt=""></p>
-<h2 id="git-repos-detail-版本库"><a href="#git-repos-detail-版本库" class="headerlink" title="git-repos-detail 版本库"></a>git-repos-detail 版本库</h2><p><img src="/uploads/git-repos-detail.jpg" alt=""></p>
-<h2 id="git-文件夹结构"><a href="#git-文件夹结构" class="headerlink" title=".git 文件夹结构"></a>.git 文件夹结构</h2><p>HEAD<br>config<br>objects<br>logs<br>refs<br>index</p>
-<hr>
-<h1 id="远程仓库的使用及github"><a href="#远程仓库的使用及github" class="headerlink" title="远程仓库的使用及github"></a>远程仓库的使用及github</h1><hr>
-<h1 id="使用github搭建免费博客"><a href="#使用github搭建免费博客" class="headerlink" title="使用github搭建免费博客"></a>使用github搭建免费博客</h1>
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/13/git分享/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1565,7 +1542,10 @@
 
       
         
-          <p>ui优化,内存优化,包大小优化,省电,计算速度优化,性能优化工具<br>
+          
+          activityactivity launchmode1.standard每次都是新的activity对象。
+2.singletop栈顶单例。特征：如果栈顶有此activity实例，当用startAc
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/02/10/android-c/#more" rel="contents">

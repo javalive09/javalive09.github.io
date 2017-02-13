@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="ui优化,内存优化,包大小优化,省电,计算速度优化,性能优化工具">
+<meta name="description" content="activityactivity launchmode1.standard每次都是新的activity对象。
+2.singletop栈顶单例。特征：如果栈顶有此activity实例，当用startActivity调用此activity时，会复用这个activity，并调用onNewIntent() 刷新intent数据。应用场景：防止一个activity 显示多个实例。
+3.singleTask：">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android-c">
 <meta property="og:url" content="http://yoursite.com/2017/02/10/android-c/index.html">
 <meta property="og:site_name" content="200code">
-<meta property="og:description" content="ui优化,内存优化,包大小优化,省电,计算速度优化,性能优化工具">
-<meta property="og:updated_time" content="2017-02-12T14:27:35.000Z">
+<meta property="og:description" content="activityactivity launchmode1.standard每次都是新的activity对象。
+2.singletop栈顶单例。特征：如果栈顶有此activity实例，当用startActivity调用此activity时，会复用这个activity，并调用onNewIntent() 刷新intent数据。应用场景：防止一个activity 显示多个实例。
+3.singleTask：">
+<meta property="og:updated_time" content="2017-02-13T11:26:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android-c">
-<meta name="twitter:description" content="ui优化,内存优化,包大小优化,省电,计算速度优化,性能优化工具">
+<meta name="twitter:description" content="activityactivity launchmode1.standard每次都是新的activity对象。
+2.singletop栈顶单例。特征：如果栈顶有此activity实例，当用startActivity调用此activity时，会复用这个activity，并调用onNewIntent() 刷新intent数据。应用场景：防止一个activity 显示多个实例。
+3.singleTask：">
 
 
 
@@ -325,8 +331,7 @@
       
 
       
-        <p>ui优化,内存优化,包大小优化,省电,计算速度优化,性能优化工具<br><a id="more"></a></p>
-<h1 id="activity"><a href="#activity" class="headerlink" title="activity"></a>activity</h1><h2 id="activity-launchmode"><a href="#activity-launchmode" class="headerlink" title="activity launchmode"></a>activity launchmode</h2><h3 id="1-standard"><a href="#1-standard" class="headerlink" title="1.standard"></a>1.standard</h3><p>每次都是新的activity对象。</p>
+        <h1 id="activity"><a href="#activity" class="headerlink" title="activity"></a>activity</h1><h2 id="activity-launchmode"><a href="#activity-launchmode" class="headerlink" title="activity launchmode"></a>activity launchmode</h2><h3 id="1-standard"><a href="#1-standard" class="headerlink" title="1.standard"></a>1.standard</h3><p>每次都是新的activity对象。</p>
 <h3 id="2-singletop"><a href="#2-singletop" class="headerlink" title="2.singletop"></a>2.singletop</h3><p>栈顶单例。<br>特征：如果栈顶有此activity实例，当用startActivity调用此activity时，会复用这个activity，并调用onNewIntent() 刷新intent数据。<br>应用场景：防止一个activity 显示多个实例。</p>
 <h3 id="3-singleTask："><a href="#3-singleTask：" class="headerlink" title="3.singleTask："></a>3.singleTask：</h3><p>栈单例。<br>特征：如果栈中有此activity实例，当用startActivity调用此activity时，会复用这个activity，通过clear掉此activity之上的所有activity的方式将此activity置于栈顶，并调用onNewIntent() 刷新intent数据。<br>应用场景：会被多个应用使用的app的main activity。<br>例子: 浏览器<br>操作：打开浏览器，输入某一网址，然后打开设置界面，按home键切出应用。点击微信，点击某一个网页消息进入，点击菜单，选使用浏览器打开。选择刚才的浏览器点击打开，此时会显示新的网页内容，点击back键会退出浏览器。相同的操作，用qq操作，结果一样。</p>
 <h3 id="4-singleInstance："><a href="#4-singleInstance：" class="headerlink" title="4.singleInstance："></a>4.singleInstance：</h3><p>系统单例。<br>特征：如果栈中有此activity实例，当用startActivity调用此activity时，会复用这个activity，并调用onNewIntent() 刷新intent数据。<br>应用场景：和任何activity都没有逻辑关系（包括它所在的app）的activity<br>例子：闹钟<br>操作：打开闹钟设置界面，按home键进入微信，此时闹钟响了，进入闹钟提示界面，按返回键，回到微信界面。闹钟提示界面和任何app都没有逻辑关联，包括它自己所在的app。</p>
