@@ -453,7 +453,11 @@
         
           
             <a id="more"></a>
+<h1 id="git命令"><a href="#git命令" class="headerlink" title="git命令"></a>git命令</h1><ul>
+<li><a href="http://200code.com/2017/02/13/git%E5%91%BD%E4%BB%A4/" target="_blank" rel="external">查看</a></li>
+</ul>
 <h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">git clone //克隆仓库</div><div class="line">git init  //创建仓库</div><div class="line">git add -A  //添加到缓存区</div><div class="line">git commit -m &quot;提交代码信息&quot;</div><div class="line">git commit --amend // 修改提交信息</div><div class="line">git checkout abc //切换分支</div><div class="line">git branch a //创建分支</div><div class="line">git checkout -b abc //创建分支并切换</div><div class="line">git reset --hard HEAD  //还原到HEAD</div><div class="line">git diff //对比（工作区和上次提交）的区别</div><div class="line">git status //状态</div><div class="line">git log  // log</div><div class="line">git pull //从远程仓库拉取pull = fetch + merge</div></pre></td></tr></table></figure>
+<hr>
 <h1 id="一些使用场景"><a href="#一些使用场景" class="headerlink" title="一些使用场景"></a>一些使用场景</h1><h2 id="合并和冲突解决"><a href="#合并和冲突解决" class="headerlink" title="合并和冲突解决"></a>合并和冲突解决</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">      D---E test  </div><div class="line">     /  </div><div class="line">A---B---C---F master</div></pre></td></tr></table></figure>
 <h3 id="在master中执行-merge"><a href="#在master中执行-merge" class="headerlink" title="在master中执行 merge"></a>在master中执行 merge</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">      D--------E  </div><div class="line">     /          \  </div><div class="line">A---B---C---F----G   test, master</div></pre></td></tr></table></figure>
 <h3 id="在master中执行-rebase"><a href="#在master中执行-rebase" class="headerlink" title="在master中执行 rebase"></a>在master中执行 rebase</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">A---B---D---E---C&apos;---F&apos;   test, master</div></pre></td></tr></table></figure>
@@ -475,12 +479,14 @@
 <h2 id="当前工作被打断"><a href="#当前工作被打断" class="headerlink" title="当前工作被打断"></a>当前工作被打断</h2><h3 id="保存工作进度"><a href="#保存工作进度" class="headerlink" title="保存工作进度"></a>保存工作进度</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">git stash  </div><div class="line">git stash list  </div><div class="line">git stash apply stash@&#123;2&#125;</div></pre></td></tr></table></figure>
 <h3 id="补充提交"><a href="#补充提交" class="headerlink" title="补充提交"></a>补充提交</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git commit --amend</div></pre></td></tr></table></figure>
 <h2 id="挽救误操作"><a href="#挽救误操作" class="headerlink" title="挽救误操作"></a>挽救误操作</h2><p>分支丢失<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git reflog show</div></pre></td></tr></table></figure></p>
+<hr>
 <h1 id="git文件夹结构及git内部原理"><a href="#git文件夹结构及git内部原理" class="headerlink" title=".git文件夹结构及git内部原理"></a>.git文件夹结构及git内部原理</h1><h2 id="git-stage-暂存区"><a href="#git-stage-暂存区" class="headerlink" title="git-stage 暂存区"></a>git-stage 暂存区</h2><p><img src="/uploads/git-stage.jpg" alt=""></p>
 <h2 id="git-checkout-检出"><a href="#git-checkout-检出" class="headerlink" title="git-checkout 检出"></a>git-checkout 检出</h2><p><img src="/uploads/git-checkout.jpg" alt=""></p>
 <h2 id="git-diff-对比差异"><a href="#git-diff-对比差异" class="headerlink" title="git-diff 对比差异"></a>git-diff 对比差异</h2><p><img src="/uploads/git-diff.jpg" alt=""></p>
 <h2 id="git-reset-重置"><a href="#git-reset-重置" class="headerlink" title="git-reset 重置"></a>git-reset 重置</h2><p><img src="/uploads/git-reset.jpg" alt=""></p>
 <h2 id="git-repos-detail-版本库"><a href="#git-repos-detail-版本库" class="headerlink" title="git-repos-detail 版本库"></a>git-repos-detail 版本库</h2><p><img src="/uploads/git-repos-detail.jpg" alt=""></p>
 <h2 id="git-文件夹结构"><a href="#git-文件夹结构" class="headerlink" title=".git 文件夹结构"></a>.git 文件夹结构</h2><p>HEAD<br>config<br>objects<br>logs<br>refs<br>index</p>
+<hr>
 <h1 id="使用github搭建免费博客"><a href="#使用github搭建免费博客" class="headerlink" title="使用github搭建免费博客"></a>使用github搭建免费博客</h1>
           
         
