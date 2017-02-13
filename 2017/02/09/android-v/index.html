@@ -84,19 +84,22 @@
 
 
 
-<meta name="description" content="view,window,设备的适配">
+<meta name="description" content="viewanimation帧动画 frame anim动画类 AnimationDrawable配置xml文件  animation-listanimation自定义 重写方法applyTransformation()改变Transformation启动 setBackground()
+补间动画 tween anim动画类 AlphaAnimation , RotateAnimation, Sca">
 <meta property="og:type" content="article">
 <meta property="og:title" content="android-v">
 <meta property="og:url" content="http://yoursite.com/2017/02/09/android-v/index.html">
 <meta property="og:site_name" content="200code">
-<meta property="og:description" content="view,window,设备的适配">
+<meta property="og:description" content="viewanimation帧动画 frame anim动画类 AnimationDrawable配置xml文件  animation-listanimation自定义 重写方法applyTransformation()改变Transformation启动 setBackground()
+补间动画 tween anim动画类 AlphaAnimation , RotateAnimation, Sca">
 <meta property="og:image" content="http://yoursite.com/uploads/pixel.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/scroll.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/fitres.jpg">
-<meta property="og:updated_time" content="2017-02-12T14:29:07.000Z">
+<meta property="og:updated_time" content="2017-02-13T13:13:35.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="android-v">
-<meta name="twitter:description" content="view,window,设备的适配">
+<meta name="twitter:description" content="viewanimation帧动画 frame anim动画类 AnimationDrawable配置xml文件  animation-listanimation自定义 重写方法applyTransformation()改变Transformation启动 setBackground()
+补间动画 tween anim动画类 AlphaAnimation , RotateAnimation, Sca">
 <meta name="twitter:image" content="http://yoursite.com/uploads/pixel.jpg">
 
 
@@ -197,21 +200,11 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
           </a>
         </li>
       
@@ -329,8 +322,7 @@
       
 
       
-        <p>view,window,设备的适配<br><a id="more"></a></p>
-<h1 id="view"><a href="#view" class="headerlink" title="view"></a>view</h1><h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><h3 id="帧动画-frame-anim"><a href="#帧动画-frame-anim" class="headerlink" title="帧动画 frame anim"></a>帧动画 frame anim</h3><p>动画类 AnimationDrawable<br>配置xml文件  animation-list<br>animation自定义 重写方法applyTransformation()改变Transformation<br>启动 setBackground()</p>
+        <h1 id="view"><a href="#view" class="headerlink" title="view"></a>view</h1><h2 id="animation"><a href="#animation" class="headerlink" title="animation"></a>animation</h2><h3 id="帧动画-frame-anim"><a href="#帧动画-frame-anim" class="headerlink" title="帧动画 frame anim"></a>帧动画 frame anim</h3><p>动画类 AnimationDrawable<br>配置xml文件  animation-list<br>animation自定义 重写方法applyTransformation()改变Transformation<br>启动 setBackground()</p>
 <h3 id="补间动画-tween-anim"><a href="#补间动画-tween-anim" class="headerlink" title="补间动画 tween anim"></a>补间动画 tween anim</h3><p>动画类 AlphaAnimation , RotateAnimation, ScaleAnimation, TranslateAnimation<br>配置xml文件 alpha, rotate, scale, translate<br>启动 AnimationUtils.loadAnimation（context，R.anim.x）;</p>
 <h4 id="alpha"><a href="#alpha" class="headerlink" title="alpha"></a>alpha</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;  </div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;  </div><div class="line">    android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;&gt;  </div><div class="line">    &lt;!-- fromAlpha和toAlpha是起始透明度和结束时透明度 --&gt;  </div><div class="line">    &lt;alpha  </div><div class="line">        android:fromAlpha=&quot;1.0&quot;  </div><div class="line">        android:toAlpha=&quot;0.0&quot;  </div><div class="line">        android:startOffset=&quot;500&quot;  </div><div class="line">        android:duration=&quot;500&quot;/&gt;  </div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
 <h4 id="rotate"><a href="#rotate" class="headerlink" title="rotate"></a>rotate</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">&lt;?xml version=&quot;1.0&quot; encoding=&quot;utf-8&quot;?&gt;  </div><div class="line">&lt;set xmlns:android=&quot;http://schemas.android.com/apk/res/android&quot;  </div><div class="line">    android:interpolator=&quot;@android:anim/accelerate_interpolator&quot;&gt;  </div><div class="line">    &lt;!--  </div><div class="line">        fromDegrees:开始的角度  </div><div class="line">        toDegrees：结束的角度，+表示是正的  </div><div class="line">        当角度为负数——表示逆时针旋转  </div><div class="line">        当角度为正数——表示顺时针旋转  </div><div class="line">        pivotX：用于设置旋转时的x轴坐标  </div><div class="line">        例  </div><div class="line">           1)当值为&quot;50&quot;，表示使用绝对位置定位  </div><div class="line">           2)当值为&quot;50%&quot;，表示使用相对于控件本身定位  </div><div class="line">           3)当值为&quot;50%p&quot;，表示使用相对于控件的父控件定位  </div><div class="line">        pivotY：用于设置旋转时的y轴坐标  </div><div class="line">      --&gt;  </div><div class="line">    &lt;rotate  </div><div class="line">        android:fromDegrees=&quot;0&quot;  </div><div class="line">        android:toDegrees=&quot;+360&quot;  </div><div class="line">        android:pivotX=&quot;50%&quot;  </div><div class="line">        android:pivotY=&quot;50%&quot;  </div><div class="line">        android:duration=&quot;1000&quot;/&gt;  </div><div class="line">&lt;/set&gt;</div></pre></td></tr></table></figure>
@@ -626,8 +618,8 @@
         
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">18</span>
+              <a href="/">
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

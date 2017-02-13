@@ -84,19 +84,25 @@
 
 
 
-<meta name="description" content="JVM虚拟机, java多线程并发处理, 反射, 动态代理">
+<meta name="description" content="JVM虚拟机java内存模型逻辑模型方法区存放类信息、常量池、静态数据
+堆存放new出的对象成员变量存放在堆中
+栈局部变量存放在栈中Java中的栈：每当启动一个线程时JVM就为他分配一个java栈，栈是以帧为单位保存当前线程的运行状态。每当调用一个java方法时，JVM会在该线程对应的栈中压入一个帧。执行这个方法时，它使用这个帧来存储参数、局部变量、this等信息。方法执行完栈中会弹出帧。数据结构">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java3">
 <meta property="og:url" content="http://yoursite.com/2017/02/09/java3/index.html">
 <meta property="og:site_name" content="200code">
-<meta property="og:description" content="JVM虚拟机, java多线程并发处理, 反射, 动态代理">
+<meta property="og:description" content="JVM虚拟机java内存模型逻辑模型方法区存放类信息、常量池、静态数据
+堆存放new出的对象成员变量存放在堆中
+栈局部变量存放在栈中Java中的栈：每当启动一个线程时JVM就为他分配一个java栈，栈是以帧为单位保存当前线程的运行状态。每当调用一个java方法时，JVM会在该线程对应的栈中压入一个帧。执行这个方法时，它使用这个帧来存储参数、局部变量、this等信息。方法执行完栈中会弹出帧。数据结构">
 <meta property="og:image" content="http://yoursite.com/uploads/jvm1.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/jvm2.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/classloader.jpg">
-<meta property="og:updated_time" content="2017-02-10T10:28:26.000Z">
+<meta property="og:updated_time" content="2017-02-13T13:14:23.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java3">
-<meta name="twitter:description" content="JVM虚拟机, java多线程并发处理, 反射, 动态代理">
+<meta name="twitter:description" content="JVM虚拟机java内存模型逻辑模型方法区存放类信息、常量池、静态数据
+堆存放new出的对象成员变量存放在堆中
+栈局部变量存放在栈中Java中的栈：每当启动一个线程时JVM就为他分配一个java栈，栈是以帧为单位保存当前线程的运行状态。每当调用一个java方法时，JVM会在该线程对应的栈中压入一个帧。执行这个方法时，它使用这个帧来存储参数、局部变量、this等信息。方法执行完栈中会弹出帧。数据结构">
 <meta name="twitter:image" content="http://yoursite.com/uploads/jvm1.jpg">
 
 
@@ -197,21 +203,11 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
           </a>
         </li>
       
@@ -329,8 +325,7 @@
       
 
       
-        <p>JVM虚拟机, java多线程并发处理, 反射, 动态代理<br><a id="more"></a></p>
-<h1 id="JVM虚拟机"><a href="#JVM虚拟机" class="headerlink" title="JVM虚拟机"></a>JVM虚拟机</h1><h2 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h2><h3 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h3><h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>存放类信息、常量池、静态数据</p>
+        <h1 id="JVM虚拟机"><a href="#JVM虚拟机" class="headerlink" title="JVM虚拟机"></a>JVM虚拟机</h1><h2 id="java内存模型"><a href="#java内存模型" class="headerlink" title="java内存模型"></a>java内存模型</h2><h3 id="逻辑模型"><a href="#逻辑模型" class="headerlink" title="逻辑模型"></a>逻辑模型</h3><h4 id="方法区"><a href="#方法区" class="headerlink" title="方法区"></a>方法区</h4><p>存放类信息、常量池、静态数据</p>
 <h3 id="堆"><a href="#堆" class="headerlink" title="堆"></a>堆</h3><p>存放new出的对象<br>成员变量存放在堆中</p>
 <h3 id="栈"><a href="#栈" class="headerlink" title="栈"></a>栈</h3><p>局部变量存放在栈中<br>Java中的栈：每当启动一个线程时JVM就为他分配一个java栈，栈是以帧为单位保存当前线程的运行状态。每当调用一个java方法时，JVM会在该线程对应的栈中压入一个帧。执行这个方法时，它使用这个帧来存储参数、局部变量、this等信息。方法执行完栈中会弹出帧。数据结构中的栈：当需要回溯操作时会用栈。路径回溯、操作回溯。</p>
 <h3 id="寄存器"><a href="#寄存器" class="headerlink" title="寄存器"></a>寄存器</h3><p>用于计算寻址。<br><img src="/uploads/jvm1.jpg" alt="模型"></p>
@@ -545,8 +540,8 @@
         
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">18</span>
+              <a href="/">
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

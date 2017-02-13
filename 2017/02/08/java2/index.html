@@ -84,19 +84,37 @@
 
 
 
-<meta name="description" content="多线程, IO流, 容器, 内部类, 网络">
+<meta name="description" content="多线程线程和进程的关系线程寄生在进程中。一个进程中可以有多个线程。进程本质上是一个执行的程序。线程是多任务处理的最小单位。多线程比多进程消耗更少的资源。
+定义在单个程序中同时执行多个不同的任务。多线程的目的是为了最大限度的利用cpu资源。当程序运行时，会自动产生一个主线程，main方法就在这个主线程中运行。
+生命周期
+运行流程
+控制sleep()睡眠
+join()加入启动它的线程，让异步变同步
+y">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java2">
 <meta property="og:url" content="http://yoursite.com/2017/02/08/java2/index.html">
 <meta property="og:site_name" content="200code">
-<meta property="og:description" content="多线程, IO流, 容器, 内部类, 网络">
+<meta property="og:description" content="多线程线程和进程的关系线程寄生在进程中。一个进程中可以有多个线程。进程本质上是一个执行的程序。线程是多任务处理的最小单位。多线程比多进程消耗更少的资源。
+定义在单个程序中同时执行多个不同的任务。多线程的目的是为了最大限度的利用cpu资源。当程序运行时，会自动产生一个主线程，main方法就在这个主线程中运行。
+生命周期
+运行流程
+控制sleep()睡眠
+join()加入启动它的线程，让异步变同步
+y">
 <meta property="og:image" content="http://yoursite.com/uploads/threadlife.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/threadlogic.jpg">
 <meta property="og:image" content="http://yoursite.com/uploads/hashmap.jpg">
-<meta property="og:updated_time" content="2017-02-11T01:41:21.000Z">
+<meta property="og:updated_time" content="2017-02-13T13:14:16.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java2">
-<meta name="twitter:description" content="多线程, IO流, 容器, 内部类, 网络">
+<meta name="twitter:description" content="多线程线程和进程的关系线程寄生在进程中。一个进程中可以有多个线程。进程本质上是一个执行的程序。线程是多任务处理的最小单位。多线程比多进程消耗更少的资源。
+定义在单个程序中同时执行多个不同的任务。多线程的目的是为了最大限度的利用cpu资源。当程序运行时，会自动产生一个主线程，main方法就在这个主线程中运行。
+生命周期
+运行流程
+控制sleep()睡眠
+join()加入启动它的线程，让异步变同步
+y">
 <meta name="twitter:image" content="http://yoursite.com/uploads/threadlife.jpg">
 
 
@@ -197,21 +215,11 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
           </a>
         </li>
       
@@ -329,8 +337,7 @@
       
 
       
-        <p>多线程, IO流, 容器, 内部类, 网络<br><a id="more"></a></p>
-<h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="线程和进程的关系"><a href="#线程和进程的关系" class="headerlink" title="线程和进程的关系"></a>线程和进程的关系</h2><p>线程寄生在进程中。一个进程中可以有多个线程。<br>进程本质上是一个执行的程序。<br>线程是多任务处理的最小单位。<br>多线程比多进程消耗更少的资源。</p>
+        <h1 id="多线程"><a href="#多线程" class="headerlink" title="多线程"></a>多线程</h1><h2 id="线程和进程的关系"><a href="#线程和进程的关系" class="headerlink" title="线程和进程的关系"></a>线程和进程的关系</h2><p>线程寄生在进程中。一个进程中可以有多个线程。<br>进程本质上是一个执行的程序。<br>线程是多任务处理的最小单位。<br>多线程比多进程消耗更少的资源。</p>
 <h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>在单个程序中同时执行多个不同的任务。多线程的目的是为了最大限度的利用cpu资源。<br>当程序运行时，会自动产生一个主线程，main方法就在这个主线程中运行。</p>
 <h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><p><img src="/uploads/threadlife.jpg" alt=""></p>
 <h2 id="运行流程"><a href="#运行流程" class="headerlink" title="运行流程"></a>运行流程</h2><p><img src="/uploads/threadlogic.jpg" alt=""></p>
@@ -506,8 +513,8 @@
         
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">18</span>
+              <a href="/">
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

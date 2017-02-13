@@ -84,17 +84,17 @@
 
 
 
-<meta name="description" content="基本类型, 面向对象, 内存回收, 异常处理">
+<meta name="description" content="基本类型数据类型基本数据类型（4类8种，能自动装箱）整形byte（8 bit，1个字节 -128~127）存储和传输容量的计量单位，字节。最早的PC机数据总线宽度是8（8根线）用8位表示一个字（c中char是一个字节）表示方法1：byte b = 1;注意：默认类型是int型，所以当b在[-128,127]之间时编译器不会报错。例如：byte a = 1；byte b = 2；byte c；c =">
 <meta property="og:type" content="article">
 <meta property="og:title" content="java1">
 <meta property="og:url" content="http://yoursite.com/2017/02/08/java1/index.html">
 <meta property="og:site_name" content="200code">
-<meta property="og:description" content="基本类型, 面向对象, 内存回收, 异常处理">
+<meta property="og:description" content="基本类型数据类型基本数据类型（4类8种，能自动装箱）整形byte（8 bit，1个字节 -128~127）存储和传输容量的计量单位，字节。最早的PC机数据总线宽度是8（8根线）用8位表示一个字（c中char是一个字节）表示方法1：byte b = 1;注意：默认类型是int型，所以当b在[-128,127]之间时编译器不会报错。例如：byte a = 1；byte b = 2；byte c；c =">
 <meta property="og:image" content="http://yoursite.com/uploads/array.jpg">
-<meta property="og:updated_time" content="2017-02-09T09:53:24.000Z">
+<meta property="og:updated_time" content="2017-02-13T13:14:09.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="java1">
-<meta name="twitter:description" content="基本类型, 面向对象, 内存回收, 异常处理">
+<meta name="twitter:description" content="基本类型数据类型基本数据类型（4类8种，能自动装箱）整形byte（8 bit，1个字节 -128~127）存储和传输容量的计量单位，字节。最早的PC机数据总线宽度是8（8根线）用8位表示一个字（c中char是一个字节）表示方法1：byte b = 1;注意：默认类型是int型，所以当b在[-128,127]之间时编译器不会报错。例如：byte a = 1；byte b = 2；byte c；c =">
 <meta name="twitter:image" content="http://yoursite.com/uploads/array.jpg">
 
 
@@ -195,21 +195,11 @@
       
         
         <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
+          <a href="/archives" rel="section">
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
           </a>
         </li>
       
@@ -327,8 +317,7 @@
       
 
       
-        <p>基本类型, 面向对象, 内存回收, 异常处理<br><a id="more"></a></p>
-<h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本数据类型（4类8种，能自动装箱）"><a href="#基本数据类型（4类8种，能自动装箱）" class="headerlink" title="基本数据类型（4类8种，能自动装箱）"></a>基本数据类型（4类8种，能自动装箱）</h3><h4 id="整形"><a href="#整形" class="headerlink" title="整形"></a>整形</h4><h5 id="byte（8-bit，1个字节-128-127）"><a href="#byte（8-bit，1个字节-128-127）" class="headerlink" title="byte（8 bit，1个字节 -128~127）"></a>byte（8 bit，1个字节 -128~127）</h5><p>存储和传输容量的计量单位，字节。最早的PC机数据总线宽度是8（8根线）用8位表示一个字（c中char是一个字节）<br>表示方法1：byte b = 1;<br>注意：默认类型是int型，所以当b在[-128,127]之间时编译器不会报错。<br>例如：byte a = 1；byte b = 2；byte c；<br>c = a + 1; //会报错，相当于把int赋值给byte<br>c = a + b //会报错，相当于把int赋值给byte<br>short （16 bit， 2个字节）<br>short a = 1;<br>int b = a;//编译报错<br>注意：不可以显示的将范围大的数据类型赋值给范围小的数据类型<br>总结：可以将范围小的值赋给表示范围大的变量；但不能将表示范围大的值赋给表示范围小的变量，只能通过强制类型转换<br>范围大的强转成范围小的变量时：前面舍位<br>范围小的强转成范围大的变量时：前面补位   ,如是正数前面补位0，如是负数前面补位1.</p>
+        <h1 id="基本类型"><a href="#基本类型" class="headerlink" title="基本类型"></a>基本类型</h1><h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本数据类型（4类8种，能自动装箱）"><a href="#基本数据类型（4类8种，能自动装箱）" class="headerlink" title="基本数据类型（4类8种，能自动装箱）"></a>基本数据类型（4类8种，能自动装箱）</h3><h4 id="整形"><a href="#整形" class="headerlink" title="整形"></a>整形</h4><h5 id="byte（8-bit，1个字节-128-127）"><a href="#byte（8-bit，1个字节-128-127）" class="headerlink" title="byte（8 bit，1个字节 -128~127）"></a>byte（8 bit，1个字节 -128~127）</h5><p>存储和传输容量的计量单位，字节。最早的PC机数据总线宽度是8（8根线）用8位表示一个字（c中char是一个字节）<br>表示方法1：byte b = 1;<br>注意：默认类型是int型，所以当b在[-128,127]之间时编译器不会报错。<br>例如：byte a = 1；byte b = 2；byte c；<br>c = a + 1; //会报错，相当于把int赋值给byte<br>c = a + b //会报错，相当于把int赋值给byte<br>short （16 bit， 2个字节）<br>short a = 1;<br>int b = a;//编译报错<br>注意：不可以显示的将范围大的数据类型赋值给范围小的数据类型<br>总结：可以将范围小的值赋给表示范围大的变量；但不能将表示范围大的值赋给表示范围小的变量，只能通过强制类型转换<br>范围大的强转成范围小的变量时：前面舍位<br>范围小的强转成范围大的变量时：前面补位   ,如是正数前面补位0，如是负数前面补位1.</p>
 <h5 id="short（16-bit，-2个字节）"><a href="#short（16-bit，-2个字节）" class="headerlink" title="short（16 bit， 2个字节）"></a>short（16 bit， 2个字节）</h5><p>short a = 1;<br>int b = a;//编译报错<br>注意：不可以显示的将范围大的数据类型赋值给范围小的数据类型<br>总结：可以将范围小的值赋给表示范围大的变量；但不能将表示范围大的值赋给表示范围小的变量，只能通过强制类型转换<br>范围大的强转成范围小的变量时：前面舍位<br>范围小的强转成范围大的变量时：前面补位   ,如是正数前面补位0，如是负数前面补位1.</p>
 <h5 id="int（32-bit，4个字节）"><a href="#int（32-bit，4个字节）" class="headerlink" title="int（32 bit，4个字节）"></a>int（32 bit，4个字节）</h5><p>整形的默认类型<br>表示方法: int i = 1;</p>
 <h5 id="long（64-bit，8个字节）"><a href="#long（64-bit，8个字节）" class="headerlink" title="long（64 bit，8个字节）"></a>long（64 bit，8个字节）</h5><p>表示方法1： long m = 1;<br>表示方法2： long m = 2l;<br>表示方法3： long m = 2L;</p>
@@ -604,8 +593,8 @@
         
           
             <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">18</span>
+              <a href="/">
+                <span class="site-state-item-count">22</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
