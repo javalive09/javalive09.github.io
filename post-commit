@@ -1,0 +1,7 @@
+#!/usr/bin/env python2.7
+
+import subprocess
+
+subprocess.call("hexo clean", shell=True)
+subprocess.call("hexo g", shell=True)
+subprocess.call("hexo d", shell=True)
